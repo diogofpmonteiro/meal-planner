@@ -29,6 +29,7 @@ const mealTypeLabels: Record<MealType, { label: string; icon: string; color: str
   breakfast: { label: "Breakfast", icon: "🌅", color: "bg-amber-100 border-amber-200 text-amber-700" },
   lunch: { label: "Lunch", icon: "☀️", color: "bg-orange-100 border-orange-200 text-orange-700" },
   dinner: { label: "Dinner", icon: "🌙", color: "bg-blue-100 border-blue-200 text-blue-700" },
+  snack: { label: "Snack", icon: "🍿", color: "bg-green-100 border-green-200 text-green-700" },
 };
 
 export function MealCalendar() {
@@ -91,7 +92,7 @@ export function MealCalendar() {
           isCompact ? "p-2" : "p-3 min-h-[120px]",
           isCurrentDay && "ring-2 ring-primary bg-primary/5",
           !isCurrentMonth && "opacity-40",
-          "hover:bg-muted",
+          "hover:bg-muted"
         )}
         onClick={() => {
           setSelectedDate(dateStr);
@@ -270,7 +271,7 @@ export function MealCalendar() {
                 onClick={() => setView(v)}
                 className={cn(
                   "px-3 py-1.5 text-sm font-medium rounded-md transition-all capitalize",
-                  view === v ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground",
+                  view === v ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
                 )}>
                 {v}
               </button>

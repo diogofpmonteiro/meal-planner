@@ -40,7 +40,7 @@ export interface Recipe {
   createdAt: string;
 }
 
-export type MealType = "breakfast" | "lunch" | "dinner";
+export type MealType = "breakfast" | "lunch" | "dinner" | "snack";
 
 export interface MealSlot {
   id: string;
@@ -62,15 +62,7 @@ export interface ShoppingItem {
 
 export interface User {
   id: string;
-  name: string;
   email: string;
-}
-
-export interface AppState {
-  recipes: Recipe[];
-  mealPlan: MealSlot[];
-  shoppingList: ShoppingItem[];
-  currentUser: User | null;
 }
 
 // View types

@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { MealType } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { useAuthStore } from "@/lib/stores/authStore";
 import { useMealPlanStore } from "@/lib/stores/mealPlanStore";
 import { useRecipeStore } from "@/lib/stores/recipeStore";
 import { useShoppingStore } from "@/lib/stores/shoppingStore";
@@ -15,6 +14,7 @@ const mealTypeIcons: Record<MealType, string> = {
   breakfast: "🌅",
   lunch: "☀️",
   dinner: "🌙",
+  snack: "🍿",
 };
 
 const containerVariants = {
@@ -31,7 +31,6 @@ const itemVariants = {
 };
 
 export function Dashboard() {
-  const { currentUser } = useAuthStore();
   const { mealPlan } = useMealPlanStore();
   const { recipes } = useRecipeStore();
   const { shoppingList, generateShoppingList } = useShoppingStore();
@@ -63,7 +62,7 @@ export function Dashboard() {
       }
       return acc;
     },
-    { calories: 0, protein: 0, carbs: 0, fats: 0 },
+    { calories: 0, protein: 0, carbs: 0, fats: 0 }
   );
 
   // Generate shopping list for the week if empty
@@ -78,9 +77,7 @@ export function Dashboard() {
     <motion.div variants={containerVariants} initial='hidden' animate='show' className='space-y-6 md:ml-48'>
       {/* Welcome Header */}
       <motion.div variants={itemVariants} className='space-y-1'>
-        <h1 className='font-display text-2xl md:text-3xl font-bold text-foreground'>
-          Welcome back, {currentUser?.name || "Chef"}! 👋
-        </h1>
+        <h1 className='font-display text-2xl md:text-3xl font-bold text-foreground'>Welcome back! 👋</h1>
         <p className='text-muted-foreground'>{format(today, "EEEE, MMMM d")} — Let's plan some delicious meals</p>
       </motion.div>
 
@@ -182,7 +179,7 @@ export function Dashboard() {
                       key={mealType}
                       className={cn(
                         "flex items-center gap-3 p-3 rounded-xl transition-colors",
-                        meal ? "bg-sage-50 border border-sage-100" : "bg-muted/50 border border-dashed border-border",
+                        meal ? "bg-sage-50 border border-sage-100" : "bg-muted/50 border border-dashed border-border"
                       )}>
                       <span className='text-2xl'>{mealTypeIcons[mealType]}</span>
                       <div className='flex-1'>
@@ -239,7 +236,7 @@ export function Dashboard() {
                     to='/calendar'
                     className={cn(
                       "p-2 md:p-3 rounded-xl text-center transition-all hover:bg-muted",
-                      isCurrentDay && "bg-primary/10 ring-2 ring-primary",
+                      isCurrentDay && "bg-primary/10 ring-2 ring-primary"
                     )}>
                     <p className='text-xs text-muted-foreground font-medium'>{format(date, "EEE")}</p>
                     <p className={cn("text-lg font-bold", isCurrentDay ? "text-primary" : "text-foreground")}>
@@ -253,7 +250,7 @@ export function Dashboard() {
                             "w-1.5 h-1.5 rounded-full",
                             meal.mealType === "breakfast" && "bg-amber-400",
                             meal.mealType === "lunch" && "bg-orange-400",
-                            meal.mealType === "dinner" && "bg-blue-400",
+                            meal.mealType === "dinner" && "bg-blue-400"
                           )}
                         />
                       ))}

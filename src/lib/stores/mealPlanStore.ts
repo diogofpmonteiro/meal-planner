@@ -38,6 +38,6 @@ export const useMealPlanStore = create<MealPlanStore>()(
         });
       },
     }),
-    { name: "mealplan-storage" },
-  ),
+    { name: "mealplan-storage" }
+  )
 );

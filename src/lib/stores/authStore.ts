@@ -1,36 +1,45 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import type { User } from "../types";
-import { mockUsers } from "../mockData";
+import supabase from "../supabase";
+import type { User } from "@supabase/supabase-js";
 
 interface AuthStore {
-  currentUser: User | null;
-  login: (email: string) => boolean;
-  logout: () => void;
+  user: User | null;
+  loading: boolean;
+  error: string | null;
+  loginMagicLink: (email: string) => Promise<void>;
+  logout: () => Promise<void>;
+  fetchUser: () => Promise<void>;
 }
 
-export const useAuthStore = create<AuthStore>()(
-  persist(
-    (set) => ({
-      currentUser: null,
+export const useAuthStore = create<AuthStore>((set) => {
+  // Listen to auth state changes
+  supabase.auth.onAuthStateChange((_event, session) => {
+    set({ user: session?.user ?? null });
+  });
 
-      login: (email) => {
-        const user = mockUsers.find((u) => u.email.toLowerCase() === email.toLowerCase());
-        if (user) {
-          set({ currentUser: user });
-          return true;
-        }
-        const newUser: User = {
-          id: Math.random().toString(36).substring(2, 11),
-          name: email.split("@")[0],
-          email,
-        };
-        set({ currentUser: newUser });
-        return true;
-      },
+  return {
+    user: null,
+    loading: false,
+    error: null,
 
-      logout: () => set({ currentUser: null }),
-    }),
-    { name: "user-storage" },
-  ),
-);
+    loginMagicLink: async (email: string) => {
+      set({ loading: true, error: null });
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: "http://localhost:5173/" },
+      });
+      if (error) set({ error: error.message });
+      set({ loading: false });
+    },
+
+    logout: async () => {
+      await supabase.auth.signOut();
+      set({ user: null });
+    },
+
+    fetchUser: async () => {
+      const { data } = await supabase.auth.getUser();
+      set({ user: data.user ?? null });
+    },
+  };
+});
