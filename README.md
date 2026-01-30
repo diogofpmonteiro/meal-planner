@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# Meal Prep Planner App - Todo List ✅
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the task list for the next iteration of the **Meal Prep Planner App**. Each task has a **priority level**: **High (H)**, **Medium (M)**, **Low (L)**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 1. Authentication & User Management
 
-## React Compiler
+- [ ] Replace mock email login with real authentication (Supabase, Firebase, or OAuth) **(H)**
+- [ ] Support multiple users with separate meal plans & shopping lists **(H)**
+- [ ] Add profile settings (name, email, dietary preferences, etc.) **(M)**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 2. Recipe Management Improvements
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [ ] Add recipe categories/tags for filtering (Breakfast, Lunch, Dinner, Vegan, etc.) **(M)**
+- [ ] Support image upload for recipes **(M)**
+- [ ] Import recipes from external APIs (e.g., Spoonacular) **(L)**
+- [ ] Edit recipe servings & auto-update dependent meal plan quantities **(H)**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 3. Meal Planner Enhancements
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [ ] Add drag-and-drop to move meals between days **(M)**
+- [ ] Implement recurring meals (e.g., “Every Monday: Oatmeal Breakfast”) **(H)**
+- [ ] Add monthly calendar view **(M)**
+- [ ] Highlight meal conflicts or missing recipes in the plan **(L)**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 4. Shopping List Enhancements
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [ ] Group items by category (produce, dairy, pantry) **(M)**
+- [ ] Allow editing quantities directly in the shopping list **(M)**
+- [ ] Mark items as purchased with persistent state **(H)**
+- [ ] Generate shopping list for custom date ranges **(M)**
+
+---
+
+## 5. UI/UX & Design Polishing
+
+- [ ] Refine responsive design for different mobile sizes **(H)**
+- [ ] Add transitions & animations for adding/removing meals & recipes (Framer Motion) **(M)**
+- [ ] Visual feedback for completed actions (toast notifications or subtle highlights) **(M)**
+- [ ] Dark mode toggle fully functional **(L)**
+
+---
+
+## 6. Data Persistence & Sync
+
+- [ ] Replace local storage with Supabase/remote DB **(H)**
+- [ ] Sync user data across devices **(H)**
+- [ ] Handle offline mode gracefully (Zustand + IndexedDB caching) **(M)**
+
+---
+
+## 7. Optional Features / Nice-to-Haves
+
+- [ ] Nutritional overview for daily/weekly meal plans **(M)**
+- [ ] Recipe scaling & smart serving suggestions **(M)**
+- [ ] Print or export shopping list PDF **(L)**
+- [ ] Share meal plans with friends/family **(L)**
+
+---
+
+**Quick access symbols for tracking:**  
+✓ ✗
