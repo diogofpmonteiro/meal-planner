@@ -8,11 +8,13 @@ export const env = createEnv({
     VITE_SUPABASE_URL: z.string().url(),
     VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY: z.string().min(1),
     VITE_SUPABASE_ANON_KEY: z.string().min(1),
+    VITE_SITE_URL: z.string().min(1),
   },
 
   runtimeEnv: {
     VITE_SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL,
     VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY: import.meta.env.VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY,
     VITE_SUPABASE_ANON_KEY: import.meta.env.VITE_SUPABASE_ANON_KEY,
+    VITE_SITE_URL: import.meta.env.VITE_SITE_URL,
   },
 });
