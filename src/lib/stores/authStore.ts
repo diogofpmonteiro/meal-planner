@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import supabase from "../supabase";
 import type { User } from "@supabase/supabase-js";
+import { env } from "../env";
 
 interface AuthStore {
   user: User | null;
@@ -26,7 +27,7 @@ export const useAuthStore = create<AuthStore>((set) => {
       set({ loading: true, error: null });
       const { error } = await supabase.auth.signInWithOtp({
         email,
-        options: { emailRedirectTo: "http://localhost:5173/" },
+        options: { emailRedirectTo: env.VITE_SITE_URL },
       });
       if (error) set({ error: error.message });
       set({ loading: false });
