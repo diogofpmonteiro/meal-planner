@@ -4,8 +4,8 @@ import { generateId } from "./utils.ts";
 
 // Mock Users
 export const mockUsers: User[] = [
-  { id: "1", name: "Alex", email: "alex@example.com" },
-  { id: "2", name: "Jordan", email: "jordan@example.com" },
+  { id: "1", email: "alex@example.com" },
+  { id: "2", email: "jordan@example.com" },
 ];
 
 // Mock Recipes
@@ -181,7 +181,7 @@ for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
   // Add breakfast (70% chance)
   if (Math.random() > 0.3) {
     const breakfastRecipes = mockRecipes.filter(
-      (r) => r.tags.includes("quick") || r.name.includes("Oat") || r.name.includes("Yogurt"),
+      (r) => r.tags.includes("quick") || r.name.includes("Oat") || r.name.includes("Yogurt")
     );
     const recipe = breakfastRecipes[Math.floor(Math.random() * breakfastRecipes.length)];
     mockMealPlan.push({
@@ -209,7 +209,7 @@ for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
   // Add dinner (90% chance)
   if (Math.random() > 0.1) {
     const dinnerRecipes = mockRecipes.filter(
-      (r) => r.name.includes("Salmon") || r.name.includes("Stir Fry") || r.name.includes("Chicken"),
+      (r) => r.name.includes("Salmon") || r.name.includes("Stir Fry") || r.name.includes("Chicken")
     );
     const recipe = dinnerRecipes[Math.floor(Math.random() * dinnerRecipes.length)] || mockRecipes[2];
     mockMealPlan.push({

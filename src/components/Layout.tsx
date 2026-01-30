@@ -19,7 +19,7 @@ const navItems = [
 
 export function Layout({ children }: LayoutProps) {
   const location = useLocation();
-  const { currentUser, logout } = useAuthStore();
+  const { user, logout } = useAuthStore();
 
   return (
     <div className='min-h-screen bg-background flex flex-col'>
@@ -33,11 +33,11 @@ export function Layout({ children }: LayoutProps) {
             <span className='font-display text-xl font-bold text-foreground'>MealPrep</span>
           </Link>
 
-          {currentUser && (
+          {user && (
             <div className='flex items-center gap-3'>
               <div className='hidden sm:flex items-center gap-2 text-sm text-muted-foreground'>
                 <User className='w-4 h-4' />
-                <span>{currentUser.name}</span>
+                <span>{user.email}</span>
               </div>
               <button onClick={logout} className='p-2 rounded-lg hover:bg-muted transition-colors' aria-label='Logout'>
                 <LogOut className='w-4 h-4 text-muted-foreground' />
@@ -69,13 +69,13 @@ export function Layout({ children }: LayoutProps) {
                 <item.icon
                   className={cn(
                     "w-5 h-5 transition-colors relative z-10",
-                    isActive ? "text-primary" : "text-muted-foreground",
+                    isActive ? "text-primary" : "text-muted-foreground"
                   )}
                 />
                 <span
                   className={cn(
                     "text-xs mt-1 transition-colors relative z-10",
-                    isActive ? "text-primary font-medium" : "text-muted-foreground",
+                    isActive ? "text-primary font-medium" : "text-muted-foreground"
                   )}>
                   {item.label}
                 </span>
@@ -98,7 +98,7 @@ export function Layout({ children }: LayoutProps) {
                   "relative flex items-center gap-3 py-3 px-4 rounded-xl transition-all group",
                   isActive
                     ? "bg-primary text-primary-foreground shadow-glow"
-                    : "hover:bg-muted text-muted-foreground hover:text-foreground",
+                    : "hover:bg-muted text-muted-foreground hover:text-foreground"
                 )}>
                 <item.icon className='w-5 h-5 shrink-0' />
                 <span className='text-sm font-medium whitespace-nowrap'>{item.label}</span>

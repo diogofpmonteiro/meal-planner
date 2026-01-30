@@ -6,36 +6,32 @@ This is the task list for the next iteration of the **Meal Prep Planner App**. E
 
 ## 1. Authentication & User Management
 
-- [ ] Replace mock email login with real authentication (Supabase, Firebase, or OAuth) **(H)**
-- [ ] Support multiple users with separate meal plans & shopping lists **(H)**
-- [ ] Add profile settings (name, email, dietary preferences, etc.) **(M)**
+- [ ] Support users with multiple meal plans & shopping lists **(L)**?
+- [ ] Add profile settings (name, email, dietary preferences, etc.) **(L)**
 
 ---
 
 ## 2. Recipe Management Improvements
 
-- [ ] Add recipe categories/tags for filtering (Breakfast, Lunch, Dinner, Vegan, etc.) **(M)**
-- [ ] Support image upload for recipes **(M)**
-- [ ] Import recipes from external APIs (e.g., Spoonacular) **(L)**
 - [ ] Edit recipe servings & auto-update dependent meal plan quantities **(H)**
+- [ ] Update Recipe Form to use zod validation, react-form-hook, and form component from shadcn **(H)**?
+- [ ] Import recipes from external APIs (e.g., Spoonacular) **(L)**?
 
 ---
 
 ## 3. Meal Planner Enhancements
 
-- [ ] Add drag-and-drop to move meals between days **(M)**
+- [ ] Add drag-and-drop to move meals between days **(L)**
 - [ ] Implement recurring meals (e.g., “Every Monday: Oatmeal Breakfast”) **(H)**
-- [ ] Add monthly calendar view **(M)**
 - [ ] Highlight meal conflicts or missing recipes in the plan **(L)**
 
 ---
 
 ## 4. Shopping List Enhancements
 
-- [ ] Group items by category (produce, dairy, pantry) **(M)**
+- [ ] Make shopping list have a persistent state **(H)**
 - [ ] Allow editing quantities directly in the shopping list **(M)**
-- [ ] Mark items as purchased with persistent state **(H)**
-- [ ] Generate shopping list for custom date ranges **(M)**
+- [ ] Generate shopping list for custom date ranges **(M)**?
 
 ---
 
@@ -60,7 +56,7 @@ This is the task list for the next iteration of the **Meal Prep Planner App**. E
 
 - [ ] Nutritional overview for daily/weekly meal plans **(M)**
 - [ ] Recipe scaling & smart serving suggestions **(M)**
-- [ ] Print or export shopping list PDF **(L)**
+- [ ] Print, allow copy or export shopping list PDF **(L)**
 - [ ] Share meal plans with friends/family **(L)**
 
 ---

@@ -52,7 +52,7 @@ export function RecipeForm({ recipe, onComplete }: RecipeFormProps) {
   const [fats, setFats] = useState(recipe?.macros.fats || 0);
   const [selectedTags, setSelectedTags] = useState<RecipeTag[]>(recipe?.tags || []);
   const [ingredients, setIngredients] = useState<Ingredient[]>(
-    recipe?.ingredients || [{ id: generateId(), name: "", quantity: 1, unit: "", category: "other" }],
+    recipe?.ingredients || [{ id: generateId(), name: "", quantity: 1, unit: "", category: "other" }]
   );
   const [instructions, setInstructions] = useState<string[]>(recipe?.instructions || [""]);
 
@@ -215,7 +215,7 @@ export function RecipeForm({ recipe, onComplete }: RecipeFormProps) {
                 "px-3 py-1.5 text-sm rounded-full border transition-all capitalize",
                 selectedTags.includes(tag)
                   ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-muted/50 text-muted-foreground border-border hover:bg-muted",
+                  : "bg-muted/50 text-muted-foreground border-border hover:bg-muted"
               )}>
               {tag.replace("-", " ")}
             </button>
